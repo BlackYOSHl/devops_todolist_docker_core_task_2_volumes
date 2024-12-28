@@ -15,10 +15,12 @@ ENV PYTHONUNBUFFERED=1
 
 COPY --from=builder /app .
 
+# Install dependencies
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
-RUN python manage.py migrate
+# Expose the Django app port
+EXPOSE 8000
 
-# Run database migrations and start the Django application
-ENTRYPOINT ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+# Command to start the Django application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
