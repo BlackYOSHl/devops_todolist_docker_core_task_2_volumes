@@ -19,6 +19,13 @@ COPY --from=builder /app .
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
+# Set environment variables for sensitive data
+ENV DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+ENV DB_HOST=${DB_HOST}
+ENV DB_NAME=${DB_NAME}
+ENV DB_USER=${DB_USER}
+ENV DB_PASSWORD=${DB_PASSWORD}
+
 # Expose the Django app port
 EXPOSE 8000
 

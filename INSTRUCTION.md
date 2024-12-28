@@ -4,7 +4,12 @@
 
 Щоб запустити контейнер MySQL, виконайте наступну команду в терміналі:
 
-docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=app_db -e MYSQL_USER=app_user -e MYSQL_PASSWORD=1234 -v mysql_data:/var/lib/mysql -p 3306:3306 mysql-local:1.0.0
+docker run -d --name mysql-container \
+  -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
+  -e MYSQL_DATABASE=${MYSQL_DATABASE} \
+  -e MYSQL_USER=${MYSQL_USER} \
+  -e MYSQL_PASSWORD=${MYSQL_PASSWORD} \
+  -v mysql_data:/var/lib/mysql -p 3306:3306 mysql-local:1.0.0
 
 # Ця команда:
 
